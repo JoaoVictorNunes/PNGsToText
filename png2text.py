@@ -40,17 +40,12 @@ def string_slicer(string):
 def main_function(paths_list):
     window['-STATUS-'].update(value='Lendo arquivos...')
     path_list = list_all_png(paths_list)
-    file = open("CRFs - Razão da Mudança.txt", 'w')
-    file2 = open("CRFs - Títulos.txt", 'w')
+    file = open("converted text.txt", 'w')
+
     for path in path_list:
         text = image_to_text(path)
         nome = path[path.rfind('/')+1:]
-
-        if 't' in nome:
-            file2.write('\n' + nome[:-5] + "\t" + "CRF - " + text[:-2].upper())
-            
-        else:
-            file.write('\n' + nome[:-4] + "\t" + text[:-2])
+        file.write('\n' + nome[:-4] + "\t" + text[:-2])
 
     file.close()
     file2.close()
